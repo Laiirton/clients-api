@@ -73,19 +73,15 @@
                                         </button>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="mt-3">
-                                <form action="{{ route('clients.regenerate-api-key', $client) }}" method="POST">
-                                    @csrf
-                                    <button type="submit" class="flex items-center text-sm text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 focus:outline-none" 
-                                        onclick="return confirm('Tem certeza? Isso invalidará a API Key atual e pode afetar integrações existentes.')">
+                            </div>                                <div class="mt-3">
+                                    <a href="#" class="flex items-center text-sm text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 focus:outline-none" 
+                                        onclick="event.preventDefault(); if(confirm('Tem certeza? Isso invalidará a API Key atual e pode afetar integrações existentes.')) document.getElementById('regenerate-form').submit();">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
                                         </svg>
                                         Regenerar API Key
-                                    </button>
-                                </form>
-                            </div>
+                                    </a>
+                                </div>
                         </div>                        <div class="flex flex-col sm:flex-row items-center justify-end mt-8 gap-3">
                             <a href="{{ route('clients.index') }}" class="w-full sm:w-auto px-5 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 bg-gray-100 dark:bg-zinc-800 hover:bg-gray-200 dark:hover:bg-zinc-700 rounded-md transition text-center">
                                 Cancelar
@@ -97,6 +93,11 @@
                                 Atualizar Cliente
                             </button>
                         </div>
+                    </form>
+                    
+                    <!-- Formulário separado para regenerar a API key -->
+                    <form id="regenerate-form" action="{{ route('clients.regenerate-api-key', $client) }}" method="POST" class="hidden">
+                        @csrf
                     </form>
                 </div>
             </div>
