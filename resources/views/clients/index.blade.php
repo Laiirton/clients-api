@@ -1,8 +1,7 @@
 <x-layouts.app>
-    <flux:main>
-        <div class="p-4 sm:p-8">
-            <div class="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Gerenciamento de Clientes</h1>
+    <div class="p-4 lg:p-6 flex-grow">
+        <div class="mb-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Gerenciamento de Clientes</h1>
                 <a href="{{ route('clients.create') }}" class="inline-flex items-center justify-center gap-2 bg-blue-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-blue-700 rounded-md shadow transition focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 w-full sm:w-auto">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -131,7 +130,7 @@
                     </div>
                 </div>
             </div>
-        </div>    </flux:main>
+        </div>
     
     <script>
         function copyToClipboard(text) {
