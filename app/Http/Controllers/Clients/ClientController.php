@@ -59,9 +59,7 @@ class ClientController extends Controller
     public function edit(Client $client)
     {
         return view('clients.edit', compact('client'));
-    }
-
-    /**
+    }    /**
      * Atualiza um cliente específico.
      */
     public function update(Request $request, Client $client)
@@ -78,7 +76,11 @@ class ClientController extends Controller
                 ->withInput();
         }
 
-        $client->update($request->all());
+        // Atualiza apenas os campos específicos
+        $client->name = $request->name;
+        $client->site = $request->site;
+        $client->status = $request->status;
+        $client->save();
 
         return redirect()->route('clients.index')
             ->with('success', 'Cliente atualizado com sucesso!');
