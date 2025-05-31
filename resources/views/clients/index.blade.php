@@ -14,12 +14,12 @@
                 <div class="bg-white dark:bg-zinc-900 overflow-hidden rounded-xl shadow-sm border border-gray-200 dark:border-zinc-700">
                     <div class="p-6 text-gray-900 dark:text-gray-100">
                         @if (session('success'))
-                            <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4 rounded" role="alert">
+                            <div class="bg-green-100 dark:bg-green-900/30 border border-green-300 dark:border-green-700 text-green-800 dark:text-green-300 p-4 mb-6 rounded-lg shadow-sm" role="alert">
                                 <div class="flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-3 text-green-600 dark:text-green-400">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
-                                    <p>{{ session('success') }}</p>
+                                    <p class="font-medium">{{ session('success') }}</p>
                                 </div>
                             </div>
                         @endif
@@ -29,22 +29,24 @@
                                 <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                                     <thead class="bg-gray-50 dark:bg-zinc-800">
                                         <tr>
-                                            <th scope="col" class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Nome</th>
-                                            <th scope="col" class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider hidden md:table-cell">Site</th>
-                                            <th scope="col" class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Status</th>
-                                            <th scope="col" class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider hidden lg:table-cell">API Key</th>
-                                            <th scope="col" class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Ações</th>
+                                            <th scope="col" class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider whitespace-nowrap">Nome</th>
+                                            <th scope="col" class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider hidden md:table-cell whitespace-nowrap">Site</th>
+                                            <th scope="col" class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider whitespace-nowrap">Status</th>
+                                            <th scope="col" class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider hidden lg:table-cell whitespace-nowrap">API Key</th>
+                                            <th scope="col" class="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider whitespace-nowrap">Ações</th>
                                         </tr>
                                     </thead>
                                     <tbody class="bg-white dark:bg-zinc-900 divide-y divide-gray-200 dark:divide-gray-700">
                                         @forelse ($clients as $client)
                                             <tr class="hover:bg-gray-50 dark:hover:bg-zinc-800/50 transition">
                                                 <td class="px-4 sm:px-6 py-4">
-                                                    <div class="font-medium text-gray-900 dark:text-white">{{ $client->name }}</div>
+                                                    <div class="font-medium text-gray-900 dark:text-white" title="{{ $client->name }}">
+                                                        <span class="inline-block max-w-[250px] truncate">{{ $client->name }}</span>
+                                                    </div>
                                                     <div class="text-sm text-gray-500 dark:text-gray-400 md:hidden">
                                                         @if ($client->site)
-                                                            <a href="{{ $client->site }}" target="_blank" class="text-blue-600 hover:underline">
-                                                                {{ Str::limit($client->site, 30) }}
+                                                            <a href="{{ $client->site }}" target="_blank" class="text-blue-600 hover:underline group relative" title="{{ $client->site }}">
+                                                                <span class="truncate block max-w-[200px] hover:max-w-full hover:truncate-none transition-all">{{ $client->site }}</span>
                                                             </a>
                                                         @else
                                                             <span class="text-gray-400">Sem site</span>
@@ -53,30 +55,33 @@
                                                 </td>
                                                 <td class="px-4 sm:px-6 py-4 hidden md:table-cell">
                                                     @if ($client->site)
-                                                        <a href="{{ $client->site }}" target="_blank" class="text-blue-600 hover:underline">
-                                                            {{ Str::limit($client->site, 30) }}
+                                                        <a href="{{ $client->site }}" target="_blank" class="text-blue-600 hover:underline group relative" title="{{ $client->site }}">
+                                                            <span class="truncate block max-w-[250px] hover:max-w-full hover:truncate-none transition-all">{{ $client->site }}</span>
+                                                            <span class="absolute -mt-8 hidden bg-black text-white text-xs rounded py-1 px-2 right-0 opacity-0 group-hover:opacity-75 transition-opacity whitespace-nowrap z-10">
+                                                                {{ $client->site }}
+                                                            </span>
                                                         </a>
                                                     @else
                                                         <span class="text-gray-400">N/A</span>
                                                     @endif
                                                 </td>
-                                                <td class="px-4 sm:px-6 py-4">
+                                                <td class="px-4 sm:px-6 py-4 whitespace-nowrap">
                                                     @if ($client->status === 'active')
-                                                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
-                                                            <span class="w-1.5 h-1.5 mr-1.5 rounded-full bg-green-500"></span>
+                                                        <span class="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+                                                            <span class="w-2 h-2 mr-1.5 rounded-full bg-green-500 animate-pulse"></span>
                                                             Ativo
                                                         </span>
                                                     @else
-                                                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400">
-                                                            <span class="w-1.5 h-1.5 mr-1.5 rounded-full bg-red-500"></span>
+                                                        <span class="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400">
+                                                            <span class="w-2 h-2 mr-1.5 rounded-full bg-red-500"></span>
                                                             Inativo
                                                         </span>
                                                     @endif
                                                 </td>
                                                 <td class="px-4 sm:px-6 py-4 hidden lg:table-cell">
                                                     <div class="flex items-center">
-                                                        <span class="text-xs bg-gray-100 dark:bg-zinc-800 p-1.5 rounded font-mono truncate max-w-[180px]">
-                                                            {{ substr($client->api_key, 0, 12) }}...
+                                                        <span class="text-xs bg-gray-100 dark:bg-zinc-800 p-1.5 rounded font-mono truncate max-w-[250px] hover:max-w-full hover:truncate-none transition-all">
+                                                            {{ substr($client->api_key, 0, 20) }}...
                                                         </span>
                                                         <button onclick="copyToClipboard('{{ $client->api_key }}')" class="ml-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 focus:outline-none" title="Copiar API Key">
                                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
@@ -85,10 +90,10 @@
                                                         </button>
                                                     </div>
                                                 </td>
-                                                <td class="px-4 sm:px-6 py-4 text-sm font-medium">
+                                                <td class="px-4 sm:px-6 py-4 text-sm font-medium whitespace-nowrap">
                                                     <div class="flex gap-3">
-                                                        <a href="{{ route('clients.edit', $client) }}" class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-300 transition flex items-center">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 sm:mr-1">
+                                                        <a href="{{ route('clients.edit', $client) }}" class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-300 transition flex items-center gap-1 px-3 py-1.5 rounded-md hover:bg-indigo-50 dark:hover:bg-indigo-900/30">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                                                             </svg>
                                                             <span class="hidden sm:inline">Editar</span>
@@ -97,9 +102,9 @@
                                                         <form action="{{ route('clients.destroy', $client) }}" method="POST" class="inline-block">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300 transition flex items-center focus:outline-none" 
+                                                            <button type="submit" class="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300 transition flex items-center gap-1 px-3 py-1.5 rounded-md hover:bg-red-50 dark:hover:bg-red-900/30 focus:outline-none" 
                                                                 onclick="return confirm('Tem certeza que deseja excluir este cliente?')">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 sm:mr-1">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
                                                                 </svg>
                                                                 <span class="hidden sm:inline">Excluir</span>
