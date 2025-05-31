@@ -1,7 +1,6 @@
 <x-layouts.app>
-    <flux:main>
-        <div class="p-8">
-            <h1 class="mb-6 text-2xl font-bold text-gray-900 dark:text-white">Painel de Controle</h1>
+    <div class="p-4 lg:p-6 flex-grow">
+        <h1 class="mb-5 text-2xl font-bold text-gray-900 dark:text-white">Painel de Controle</h1>
             
             <!-- Cards de estatísticas -->
             <div class="grid gap-6 mb-8 md:grid-cols-3">
@@ -107,5 +106,5 @@
                 </div>
             </div>
         </div>
-    </flux:main>
+    </div>
 </x-layouts.app>
