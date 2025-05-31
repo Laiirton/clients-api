@@ -1,8 +1,7 @@
 <x-layouts.app>
-    <flux:main>
-        <div class="p-8">
-            <div class="mb-6 flex items-center justify-between">
-                <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Criar Novo Cliente</h1>
+    <div class="p-4 lg:p-6 flex-grow">
+        <div class="mb-5 flex items-center justify-between">
+            <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Criar Novo Cliente</h1>
                 <a href="{{ route('clients.index') }}" class="inline-flex items-center gap-2 bg-gray-600 px-4 py-2 text-sm font-medium text-white hover:bg-gray-700 rounded-md shadow transition focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
@@ -66,5 +65,5 @@
             </div>
         </div>
         </div>
-    </flux:main>
+    </div>
 </x-layouts.app>
