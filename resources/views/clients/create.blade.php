@@ -2,7 +2,7 @@
     <div class="p-4 lg:p-6 flex-grow">
         <div class="mb-5 flex items-center justify-between">
             <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Criar Novo Cliente</h1>
-                <a href="{{ route('clients.index') }}" class="inline-flex items-center gap-2 bg-gray-600 px-4 py-2 text-sm font-medium text-white hover:bg-gray-700 rounded-md shadow transition focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
+                <a href="{{ route('clients.index') }}" class="inline-flex items-center gap-2 bg-gray-600 dark:bg-gray-700 px-4 py-2 text-sm font-medium text-white hover:bg-gray-700 dark:hover:bg-gray-600 rounded-md shadow transition focus:outline-none focus:ring-2 focus:ring-gray-500 dark:focus:ring-gray-400 focus:ring-offset-2 dark:focus:ring-offset-zinc-800">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
                     </svg>
@@ -32,7 +32,7 @@
                         <!-- Status -->
                         <div>
                             <x-input-label for="status" :value="__('Status')" />
-                            <select id="status" name="status" class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm block mt-1 w-full">
+                            <select id="status" name="status" class="border-gray-300 dark:border-zinc-600 dark:bg-zinc-800/80 dark:text-gray-100 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-blue-500 dark:focus:ring-blue-400 rounded-md shadow-sm block mt-1 w-full">
                                 <option value="active" {{ old('status') == 'active' ? 'selected' : '' }}>Ativo</option>
                                 <option value="inactive" {{ old('status') == 'inactive' ? 'selected' : '' }}>Inativo</option>
                             </select>
@@ -49,11 +49,11 @@
                                     <p>Uma API Key <span class="font-semibold">SHA-256</span> será gerada automaticamente quando o cliente for criado.</p>
                                 </div>
                             </div>
-                        </div>                        <div class="flex items-center justify-end mt-8">
-                            <a href="{{ route('clients.index') }}" class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100">
+                        </div>                        <div class="flex flex-col sm:flex-row items-center justify-end mt-8 gap-3">
+                            <a href="{{ route('clients.index') }}" class="w-full sm:w-auto px-5 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white bg-gray-100 dark:bg-zinc-800/80 hover:bg-gray-200 dark:hover:bg-zinc-700 rounded-md transition text-center border border-gray-200 dark:border-zinc-700">
                                 Cancelar
                             </a>
-                            <button type="submit" class="ml-3 inline-flex items-center gap-2 bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 rounded-md shadow transition focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                            <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-blue-600 dark:bg-blue-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-700 dark:hover:bg-blue-700 rounded-md shadow transition focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:ring-offset-2 dark:focus:ring-offset-zinc-800">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                                 </svg>
