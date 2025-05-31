@@ -60,8 +60,10 @@
                                                 </svg>
                                             </div>
                                             <input type="text" name="api_key" id="api_key" 
-                                                class="font-mono bg-gray-50 dark:bg-zinc-800 border-gray-300 dark:border-zinc-700 text-gray-900 dark:text-gray-300 focus:border-blue-500 dark:focus:border-blue-600 block w-full sm:rounded-l-md rounded-md sm:rounded-r-none shadow-sm pl-10 py-2.5 text-sm" 
-                                                value="{{ $client->api_key }}" readonly>
+                                                class="font-mono bg-gray-50 dark:bg-zinc-800 border-gray-300 dark:border-zinc-700 text-gray-900 dark:text-gray-300 focus:border-blue-500 dark:focus:border-blue-600 block w-full sm:rounded-l-md rounded-md sm:rounded-r-none shadow-sm pl-10 py-2.5 text-sm overflow-x-auto" 
+                                                value="{{ $client->api_key }}" readonly 
+                                                onclick="this.select();" 
+                                                style="padding-right: 10px; min-width: 300px;">
                                         </div>
                                         <button type="button" 
                                             onclick="copyToClipboard('{{ $client->api_key }}')" 
